@@ -41,7 +41,7 @@ def verify(arrobas):
                         print(handle)
                         print(resp.url)
                         print(archive_url)
-                        twitter.tweet(handle, tweet, archive_url, creation_date)
+                        twitter.tweet(handle, tweet, archive_url, creation_date, id)
                         database.update_tweet(id)
                 resp.close()
 

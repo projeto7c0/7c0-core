@@ -35,10 +35,11 @@ def get_all(conta):
     return tweets
 
 
-def tweet(handle,tweet, archive_url, creation_date):
+def tweet(handle, tweet, archive_url, creation_date, idTweets):
     api = twitter_auth.autentica_tweets()
-    status = api.update_status("A arroba " + handle + " apagou um tweet de " + creation_date + " que dizia:")
-    status = api.update_status(in_reply_to_status_id = status.id, status = (tweet[0:277]+"..."))
+    status = api.update_status("O tweet com id " + idTweets + " de " + creation_date + " sumiu da timeline da arroba " + handle + ", o tweet começava assim: ")
+    tweet = str(tweet).replace("//", "/ /")
+    status = api.update_status(in_reply_to_status_id = status.id, status = (tweet[0:200]+"..."))
     if not archive_url.startswith("Não"):
         api.update_status(in_reply_to_status_id = status.id, status = "Está arquivado nesse link: " + archive_url)
 
