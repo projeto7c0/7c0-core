@@ -7,12 +7,11 @@ def insere_um(tweet, db):
     cursor = db.cursor()
 
     try:
-        line = re.sub('"', '', tweet.full_text)
-        sql = "INSERT INTO `tweets`.`mimic_tweets` (`idTweets`, `plain_text`, `timestamp_tw`, `handle`, `retweets`, `favs`) VALUES (" \
-              ""+tweet.id_str+", \""+ line +"\",\""+str(tweet.created_at)+"\" , \""+tweet.user.screen_name+"\", "+str(tweet.retweet_count)+", "+str(tweet.favorite_count)+\
-              ");"
+        sql = "INSERT INTO `tweets_int`.`tweets` (`idTweets`, `plain_text`, `timestamp_tw`, `handle`, `retweets`, `favs`, `object`) " \
+              "VALUES (%s, %s, %s, %s, %s, %s, %s);"
         try:
-            cursor.execute(sql)
+            cursor.execute(sql, (tweet.id_str, tweet.full_text, str(tweet.created_at), tweet.user.screen_name,
+                           str(tweet.retweet_count), str(tweet.retweet_count), json.dumps(tweet._json)))
         except Exception as E:
             print(E)
     except Exception as E:
