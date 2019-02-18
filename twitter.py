@@ -47,12 +47,19 @@ def tweet(handle, tweet, archive_url, creation_date, idTweets):
 def insere_lista(arrobas):
     api = twitter_auth.autentica_list()
 
+    for member in tweepy.Cursor(api.list_members, 'projeto7c0', 'politicos-br').items():
+        try:
+            arrobas.remove(member.screen_name)
+        except:
+            print("Não achei a arroba: " + member.screen_name)
+
     for arroba in arrobas:
         try:
             user = api.get_user(screen_name=str(arroba))
             api.add_list_member(owner_screen_name="projeto7c0", slug="politicos-br", id=user.id)
-        except:
-            print("Erro com a arroba: " +arroba)
+        except Exception as E:
+            print("Erro com a arroba: " + arroba)
+            print(E)
 
 
 def list_tweets_list(topo):
