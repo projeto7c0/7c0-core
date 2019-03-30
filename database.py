@@ -147,3 +147,16 @@ def recupera_ids_total():
         print(E)
     db.close()
     return value[0]
+
+def list_apagados(arroba):
+    db = database_auth.conecta_banco()
+    sql = "select idTweets from mimic_tweets where handle =\""+arroba+"\" and erased = 1;"
+    cursor = db.cursor()
+    try:
+        cursor.execute(sql)
+        value = cursor.fetchall()
+    except Exception as E:
+        print(E)
+    db.close()
+    return value
+
