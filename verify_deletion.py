@@ -1,7 +1,6 @@
 import database
 import grequests
-import twitter
-import urllib.request
+import time
 
 
 def exception_handler(request, exception):
@@ -23,12 +22,13 @@ def verify(arrobas):
 
         # urlss = [urls]
 
-        if len(urls) > 500:
-            urlss = split(urls, int(len(urls) / 500))
+        if len(urls) > 30:
+            urlss = split(urls, int(len(urls) / 30))
         else:
             urlss = [urls]
 
         for urls in urlss:
+            time.sleep(2)
             requests = [grequests.get(url) for url in urls]
             responses = grequests.map(requests, exception_handler=exception_handler)
             # print(len(responses))
@@ -46,17 +46,6 @@ def verify(arrobas):
                 resp.close()
 
 
-
-def check_status_code(url):
-    code = urllib.request.urlopen(url).getcode()
-    if code == 404:
-        id, tweet, handle = database.retrieve_tweet(url)
-        if len(tweet + handle) > 1:
-            print(tweet)
-            print(handle)
-            print(url)
-            twitter.tweet("O seguinte tweet sumiu da timeline do @" + handle + " -> " + tweet)
-            database.update_tweet(id)
 
 def split(a, n):
     k, m = divmod(len(a), n)
