@@ -1,6 +1,7 @@
 import database
 import grequests
 import time
+import twitter
 
 
 def exception_handler(request, exception):
@@ -22,8 +23,8 @@ def verify(arrobas):
 
         # urlss = [urls]
 
-        if len(urls) > 30:
-            urlss = split(urls, int(len(urls) / 30))
+        if len(urls) > 20:
+            urlss = split(urls, int(len(urls) / 20))
         else:
             urlss = [urls]
 

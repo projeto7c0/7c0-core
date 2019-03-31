@@ -150,7 +150,7 @@ def recupera_ids_total():
 
 def list_apagados(arroba):
     db = database_auth.conecta_banco()
-    sql = "select idTweets from mimic_tweets where handle =\""+arroba+"\" and erased = 1;"
+    sql = "select idTweets,archive_url from mimic_tweets where handle =\""+arroba+"\" and erased = 1;"
     cursor = db.cursor()
     try:
         cursor.execute(sql)

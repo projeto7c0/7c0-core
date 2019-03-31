@@ -12,4 +12,4 @@ if __name__ == '__main__':
 
         df = pd.DataFrame(list(lista), columns=["ids"])
         print(df)
-        df.to_csv(r'csv\tweets_deletados_de_'+arroba+'.csv')
+        df.to_csv(r'/home/ec2-user/7c0-core/csv/tweets_deletados_de_'+arroba+'.csv')
