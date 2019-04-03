@@ -10,6 +10,6 @@ if __name__ == '__main__':
 
         print(lista)
 
-        df = pd.DataFrame(list(lista), columns=["ids"])
+        df = pd.DataFrame(list(lista), columns=["ids","link"])
         print(df)
         df.to_csv(r'/home/ec2-user/7c0-core/csv/tweets_deletados_de_'+arroba+'.csv')
