@@ -29,7 +29,7 @@ def verify(arrobas):
             urlss = [urls]
 
         for urls in urlss:
-            time.sleep(2)
+            time.sleep(15)
             print("dormindo...")
             requests = [grequests.get(url) for url in urls]
             responses = grequests.map(requests, exception_handler=exception_handler)
