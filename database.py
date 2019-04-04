@@ -11,7 +11,7 @@ def insere_um(tweet, db):
               "VALUES (%s, %s, %s, %s, %s, %s, %s);"
         try:
             cursor.execute(sql, (tweet.id_str, tweet.full_text, str(tweet.created_at), tweet.user.screen_name,
-                           str(tweet.retweet_count), str(tweet.retweet_count), json.dumps(tweet._json)))
+                           str(tweet.retweet_count), str(tweet.retweet_count), json.dumps(tweet.json)))
         except Exception as E:
             print(E)
     except Exception as E:

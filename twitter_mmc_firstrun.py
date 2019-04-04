@@ -5,6 +5,7 @@ if __name__ == '__main__':
     from random import shuffle
 
     arrobas = contas.pega_contas()
+    arrobas = ["SF_moro"]
     shuffle(arrobas)
     print("Colentado todos os tweets...")
     get_tweets.get_all(arrobas)

@@ -20,7 +20,7 @@ def verify(arrobas):
 
         print("Verificando status dos links...")
         # print(len(urls))
-
+	#teste
         # urlss = [urls]
 
         if len(urls) > 20:
