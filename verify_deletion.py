@@ -19,9 +19,6 @@ def verify(arrobas):
 
 
         print("Verificando status dos links...")
-        # print(len(urls))
-	#teste
-        # urlss = [urls]
 
         if len(urls) > 20:
             urlss = split(urls, int(len(urls) / 20))
@@ -47,7 +44,8 @@ def verify(arrobas):
                             database.update_tweet(id)
                     resp.close()
             except Exception as E:
-                print("erro..." + E)
+                print("erro...")
+                print(E)
                 time.sleep(300)
 
 
