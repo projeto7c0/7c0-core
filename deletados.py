@@ -1,8 +1,8 @@
 if __name__ == '__main__':
     import gevent.monkey
+    gevent.monkey.patch_all()
     import time
     import contas
-    gevent.monkey.patch_all()
     import verify_deletion
     from random import shuffle
 

@@ -4,7 +4,7 @@ def cria(arroba, id, link):
     string = string.replace("account_handle", arroba)
     string = string.replace("archive_link", link)
     print("Criando arquivo...")
-    f = open(arroba+"/"+str(id)+".html", "w+")
+    f = open(r'/home/ec2-user/7c0-core/'+arroba+"/"+str(id)+".html", "w+")
     f.write(string)
     f.close()
 
