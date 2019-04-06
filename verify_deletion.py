@@ -29,23 +29,26 @@ def verify(arrobas):
             urlss = [urls]
 
         for urls in urlss:
-            time.sleep(15)
-            print("dormindo...")
-            requests = [grequests.get(url) for url in urls]
-            responses = grequests.map(requests, exception_handler=exception_handler)
-            # print(len(responses))
+            time.sleep(5)
+            try:
+                requests = [grequests.get(url) for url in urls]
+                responses = grequests.map(requests, exception_handler=exception_handler)
+                # print(len(responses))
 
-            for resp in responses:
-                if resp.status_code == 404:
-                    id, tweet, handle, archive_url, creation_date = database.retrieve_tweet(resp.url)
-                    if len(tweet + handle) > 1:
-                        print(tweet)
-                        print(handle)
-                        print(resp.url)
-                        print(archive_url)
-                        twitter.tweet(handle, tweet, archive_url, creation_date, id)
-                        database.update_tweet(id)
-                resp.close()
+                for resp in responses:
+                    if resp.status_code == 404:
+                        id, tweet, handle, archive_url, creation_date = database.retrieve_tweet(resp.url)
+                        if len(tweet + handle) > 1:
+                            print(tweet)
+                            print(handle)
+                            print(resp.url)
+                            print(archive_url)
+                            twitter.tweet(handle, tweet, archive_url, creation_date, id)
+                            database.update_tweet(id)
+                    resp.close()
+            except Exception as E:
+                print("erro..." + E)
+                time.sleep(300)
 
 
 
