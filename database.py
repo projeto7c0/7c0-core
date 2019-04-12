@@ -160,3 +160,15 @@ def list_apagados(arroba):
     db.close()
     return value
 
+def list_apagados_novo(arroba):
+    db = database_auth.conecta_banco()
+    sql = "select idTweets,plain_text,timestamp_tw from mimic_tweets where handle =\""+arroba+"\" and erased = 1;"
+    cursor = db.cursor()
+    try:
+        cursor.execute(sql)
+        value = cursor.fetchall()
+    except Exception as E:
+        print(E)
+    db.close()
+    return value
+
