@@ -4,7 +4,7 @@ def cria(arroba, id, link):
     string = string.replace("account_handle", arroba)
     string = string.replace("archive_link", link)
     print("Criando arquivo...")
-    f = open(r'/home/ec2-user/7c0-core/'+arroba+"/"+str(id)+".html", "w+")
+    f = open(r'/home/ec2-user/projeto7c0.github.io/politicians/'+arroba+"/"+str(id)+".html", "w+")
     f.write(string)
     f.close()
 
@@ -17,7 +17,7 @@ if __name__ == '__main__':
     for arroba in arrobas:
         print(arroba)
         lista = database.list_apagados(arroba)
-        os.makedirs(arroba, exist_ok=True)
+        os.makedirs(r'/home/ec2-user/projeto7c0.github.io/politicians/'+arroba, exist_ok=True)
 
         for tweet in lista:
             cria(arroba, tweet[0], str(tweet[1]).replace("http", "https", 1))
