@@ -44,7 +44,7 @@ def verify(arrobas):
                             database.update_tweet(id)
                     resp.close()
             except Exception as E:
-                print("erro...")
+                print("erro... em alguma url")
                 print(E)
                 time.sleep(300)
 
