@@ -32,7 +32,7 @@ if __name__ == '__main__':
     <meta name="description" content="Website do Projeto 7C0.">
     <meta name="keywords" content="Projeto 7C0, monitoramento, políticos, atores públicos">
     <link rel="icon" type="image/x-icon" href="./img/eye.ico" />
-    <title>Projeto 7C0 | <!--arroba--> </title>
+    <title>Projeto 7C0 | <!--arroba--> | Tweets que sumiram</title>
     <link rel="stylesheet" href="../../css/style.css">
     <script type="text/javascript" src="../../js/scripts.js"></script>
 </head>
@@ -43,7 +43,7 @@ if __name__ == '__main__':
         <div class="container">
             <div id="branding">
                 <h1>
-                    Projeto 7C0 | <!--arroba-->
+                    Projeto 7C0 | <!--arroba--> | Tweets que sumiram
                 </h1>
             </div>
             <nav>
