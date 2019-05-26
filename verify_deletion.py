@@ -2,6 +2,8 @@ import database
 import grequests
 import time
 import twitter
+from datetime import timedelta
+
 
 
 def exception_handler(request, exception):
@@ -9,6 +11,10 @@ def exception_handler(request, exception):
 
 
 def verify(arrobas):
+
+    clock = time.monotonic()
+
+    qtde_tweets = 0
 
     for arroba in arrobas:
         urls = []
@@ -41,12 +47,16 @@ def verify(arrobas):
                             print(resp.url)
                             print(archive_url)
                             twitter.tweet(handle, tweet, archive_url, creation_date, id)
+                            qtde_tweets += 1
                             database.update_tweet(id)
                     resp.close()
             except Exception as E:
                 print("erro... em alguma url")
                 print(E)
                 time.sleep(300)
+
+    twitter.tweet_end(timedelta(seconds=time.monotonic() - clock), qtde_tweets)
+
 
 
 

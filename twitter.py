@@ -44,6 +44,13 @@ def tweet(handle, tweet, archive_url, creation_date, idTweets):
         api.update_status(in_reply_to_status_id = status.id, status = "Está arquivado nesse link: " + archive_url)
 
 
+def tweet_end(time, qtde_tweets):
+    api = twitter_auth.autentica_tweets()
+    status = api.update_status("Fim da triagem diária, foram encontrados " + qtde_tweets + " apagados, em " + time +
+                               " compartilhe o perfil @projeto7c0 para que mais " +
+                               "pessoas saibam o que desaparece da timeline dos políticos.")
+
+
 def insere_lista(arrobas):
     api = twitter_auth.autentica_list()
 
