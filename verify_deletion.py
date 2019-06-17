@@ -18,7 +18,7 @@ def verify(arrobas):
 
     for arroba in arrobas:
         urls = []
-        print("Criando lista de links para... " + arroba)
+        print(qtde_tweets + " - criando lista de links para... " + arroba)
         lista_antiga = database.recupera_ids(arroba)
 
         urls += ["https://twitter.com/" + arroba + "/status/" + str(id[0]) for id in lista_antiga]
