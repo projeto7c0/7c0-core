@@ -46,10 +46,10 @@ def tweet(handle, tweet, archive_url, creation_date, idTweets):
 
 def tweet_end(time, qtde_tweets):
     api = twitter_auth.autentica_tweets()
-    api.update_status("Fim da triagem diária, foram encontrados " + str(qtde_tweets) + " apagados, em " + str(time) +
+    api.update_status("Fim da triagem diária, foram encontrados " + str(qtde_tweets) + " tweets que sumiram, em " + str(time) +
                                " compartilhe o perfil @projeto7c0 para que mais " +
                                "pessoas saibam o que desaparece da timeline dos políticos.")
-    api.update_status("Se quiser colaborar para a manutenção do nosso projeto, acesse http://www.apoia.se/projeto7c0")
+    api.update_status("Quer ajudar com a transparência da democracia brasileira? Acesse o site https://projeto7c0.com.br/ e veja como contribuir no nosso github ou ajudar a financiar no apoia.se!")
 
 
 def insere_lista(arrobas):
