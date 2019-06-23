@@ -15,10 +15,12 @@ def verify(arrobas):
     clock = time.monotonic()
 
     qtde_tweets = 0
+	qtde_arrobas = 0
 
     for arroba in arrobas:
         urls = []
-        print(str(qtde_tweets) + " - criando lista de links para... " + arroba)
+		arrobas += 1
+        print(str(qtde_arrobas) + " - criando lista de links para... " + arroba)
         lista_antiga = database.recupera_ids(arroba)
 
         urls += ["https://twitter.com/" + arroba + "/status/" + str(id[0]) for id in lista_antiga]
