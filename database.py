@@ -63,9 +63,10 @@ def recupera_ids(conta):
         value = cursor.fetchall()
     except Exception as E:
         print(E)
-		return
-	finally:
-		db.close()
+        return
+    finally:
+        db.close()
+
     return value
 
 def retrieve_tweet(twitter_url):
@@ -79,8 +80,8 @@ def retrieve_tweet(twitter_url):
         value = cursor.fetchone()
     except Exception as E:
         print(E)
-	finally:
-		db.close()
+    finally:
+        db.close()
     if value:
         if value[10]:
             return tweet_id, value[2], value[4], value[10], value[3]

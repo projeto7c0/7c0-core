@@ -15,18 +15,18 @@ def verify(arrobas):
     clock = time.monotonic()
 
     qtde_tweets = 0
-	qtde_arrobas = 0
+    qtde_arrobas = 0
 
     for arroba in arrobas:
         urls = []
-		arrobas += 1
-        print(str(qtde_arrobas) + " - criando lista de links para... " + arroba)
+        qtde_arrobas += 1
+        #print(str(qtde_arrobas) + " - criando lista de links para... " + arroba)
         lista_antiga = database.recupera_ids(arroba)
 
         urls += ["https://twitter.com/" + arroba + "/status/" + str(id[0]) for id in lista_antiga]
 
 
-        print("Verificando status dos links...")
+        #print("Verificando status dos links...")
 
         if len(urls) > 20:
             urlss = split(urls, int(len(urls) / 20))
@@ -44,10 +44,10 @@ def verify(arrobas):
                     if resp.status_code == 404:
                         id, tweet, handle, archive_url, creation_date = database.retrieve_tweet(resp.url)
                         if len(tweet + handle) > 1:
-                            print(tweet)
-                            print(handle)
-                            print(resp.url)
-                            print(archive_url)
+                            #print(tweet)
+                            #print(handle)
+                            #print(resp.url)
+                            #print(archive_url)
                             twitter.tweet(handle, tweet, archive_url, creation_date, id)
                             qtde_tweets += 1
                             database.update_tweet(id)
