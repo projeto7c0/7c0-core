@@ -1,6 +1,7 @@
 import re, time
 import database_auth
 import archiveis
+import datetime
 
 
 def insere_um(tweet, db):
@@ -82,6 +83,7 @@ def retrieve_tweet(twitter_url):
         print(E)
     finally:
         db.close()
+        
     if value:
         if value[10]:
             return tweet_id, value[2], value[4], value[10], value[3]
@@ -91,7 +93,7 @@ def retrieve_tweet(twitter_url):
         return 0, "", "", "Não arquivado", ""
 
 def update_tweet(id):
-    sql = "update mimic_tweets set erased = 1, 7c0_tweeted = 1 where idTweets = \"" + id + "\";"
+    sql = "update mimic_tweets set erased = 1, 7c0_tweeted = 1, timestamp_erased = \""+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+"\" where idTweets = \"" + id + "\";"
     db = database_auth.conecta_banco()
     cursor = db.cursor()
     try:

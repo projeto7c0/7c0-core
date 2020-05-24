@@ -7,7 +7,7 @@ if __name__ == '__main__':
     from random import shuffle
 
     arrobas = contas.pega_contas()
-    # arrobas = ["jairbolsonaro"]
+    #arrobas = ["projeto7c0"]
     shuffle(arrobas)
     print("Checando se tweets foram removidos...")
     start_time = time.time()

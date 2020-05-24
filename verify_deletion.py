@@ -34,6 +34,7 @@ def verify(arrobas):
             urlss = [urls]
 
         for urls in urlss:
+            qtde_tweets_arroba = 0
             time.sleep(5)
             try:
                 requests = [grequests.get(url) for url in urls]
@@ -44,14 +45,19 @@ def verify(arrobas):
                     if resp.status_code == 404:
                         id, tweet, handle, archive_url, creation_date = database.retrieve_tweet(resp.url)
                         if len(tweet + handle) > 1:
+                            if(qtde_tweets_arroba == 0):
+                                status = twitter.tweet_start(handle)
                             #print(tweet)
                             #print(handle)
                             #print(resp.url)
                             #print(archive_url)
-                            twitter.tweet(handle, tweet, archive_url, creation_date, id)
+                            status = twitter.tweet(handle, tweet, archive_url, creation_date, id, status)
                             qtde_tweets += 1
+                            qtde_tweets_arroba += 1
                             database.update_tweet(id)
                     resp.close()
+                
+
             except Exception as E:
                 print("erro... em alguma url")
                 print(E)
